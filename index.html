@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shining Text with Dark Mode</title>
+    <style>
+        :root {
+
+            /* Base color for the text */
+            --base-color: #424141;
+            /* Color of the shine effect */
+            --shine-color: #979797;
+            /* Background color */
+            --bg-color: #fff;
+            /* Speed of the shine animation */
+            --shine-speed: 2s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --base-color: #fff;
+                --shine-color: #888;
+                --bg-color: #111;
+            }
+        }
+
+        body {
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-weight: bold;
+            font-family: roboto, sans-serif;
+        }
+
+        .shine-text {
+            font-size: 60px;
+            font-weight: bold;
+            background: linear-gradient(120deg,
+                    var(--base-color) 20%,
+                    var(--shine-color) 40%,
+                    var(--base-color) 60%);
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: shineText var(--shine-speed) linear infinite;
+        }
+
+        @keyframes shineText {
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shine-text">Shining Text</div>
+</body>
+
+</html>
